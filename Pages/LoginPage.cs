@@ -11,24 +11,25 @@ namespace Bank_AutomationProject.Pages
     public class LoginPage : BasePage
     {
         [FindsBy(How = How.Name, Using = "uid")]
-        IWebElement UserName;
+        private readonly IWebElement UserName;
         [FindsBy(How = How.Name, Using = "password")]
-        IWebElement Password;
+        private readonly IWebElement Password;
         [FindsBy(How = How.Name, Using = "btnLogin")]
-        IWebElement LoginButton;
-        [FindsBy(How = How.XPath, Using = "tr[align='center'] td")]
-        IWebElement GetTheManagerId;
+        private readonly IWebElement LoginButton;
+        [FindsBy(How = How.CssSelector, Using = "tr[align='center'] td")]
+        private readonly IWebElement GetTheManagerId;
 
         public LoginPage()
         {
         PageFactory.InitElements(driver, this);
         }
 
-        public void Login(string Username,string Pwd)
+        public HomePage Login(string Username,string Pwd)
         {
             UserName.SendKeys(Username);
             Password.SendKeys(Pwd);
             LoginButton.Click();
+            return new HomePage();
         }
         public string GetTheLoginId()
         {

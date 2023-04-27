@@ -23,40 +23,18 @@ namespace Bank_AutomationProject
             driver.Manage().Cookies.DeleteAllCookies();
             driver.Navigate().GoToUrl("https://www.demo.guru99.com/v4/");
             driver.Manage().Timeouts().ImplicitWait=TimeSpan.FromSeconds(10);
-
-
         }
 
-       public string GetPageTitle()
+        public string GetUrl()
         {
-            String pageTitle=driver.Title;
-            return pageTitle;
+           string CurrentURL= driver.Url;
+            return CurrentURL;
         }
-
-        public void WaitUntilElementVisible(By by)
+        public string GetPageTitle()
         {
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            wait.Until(ExpectedConditions.ElementIsVisible(by));
+            string CurrentPageTitle = driver.Title;
+            return CurrentPageTitle;
         }
-
-        public void WaitUntilElementClickable(By by)
-        {
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            wait.Until(ExpectedConditions.ElementToBeClickable(by));
-        }
-
-        public void Click(By by)
-        {
-            WaitUntilElementClickable(by);
-            driver.FindElement(by).Click();
-        }
-
-        public void SendKeys(By by, string text)
-        {
-            WaitUntilElementVisible(by);
-            driver.FindElement(by).SendKeys(text);
-        }
-
         public void CloseBrowserWindow()
         {
             driver.Quit();
