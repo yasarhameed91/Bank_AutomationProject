@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,7 @@ namespace Bank_AutomationProject.Test
     public class LoginPageTest : BasePage
     {
         LoginPage Lp;
-        private HomePage Hp;
-
+        HomePage Hp;
         [SetUp]
         public void Setup()
         {
@@ -23,8 +23,8 @@ namespace Bank_AutomationProject.Test
         [Test]
         public void LoginTest()
         {
-            Hp=Lp.Login("mngr494494", "rYzanYv");
-            Assert.AreEqual("Manger Id : mngr494494", Lp.GetTheLoginId());
+            Hp = Lp.Login(config.GetUserId(),config.GetPassword());
+            Assert.AreEqual("Manger Id : "+ config.GetUserId(), Lp.GetTheLoginId());
         }
         [TearDown]
         public void TearDown()

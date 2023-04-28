@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace Bank_AutomationProject.Test
         {
             Initialization();
             Lp = new LoginPage();
-            Hp = Lp.Login("mngr494494", "rYzanYv");
+            Hp = Lp.Login(ConfigurationManager.AppSettings.Get("UserId"), ConfigurationManager.AppSettings.Get("Password"));
         }
 
         [Test]

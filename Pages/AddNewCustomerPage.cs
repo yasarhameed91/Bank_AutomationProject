@@ -10,42 +10,42 @@ namespace Bank_AutomationProject.Pages
 {
     public class AddNewCustomerPage:BasePage
     {
-        [FindsBy(How = How.Name, Using = "name")]
-        private readonly IWebElement CustomerName;
+        [FindsBy(How = How.XPath, Using = "//input[@name='name']")]
+        private IWebElement CustomerName { get; set; }
         [FindsBy(How = How.XPath, Using = "//input[@value='m']")]
-        private readonly IWebElement SelectGender;
-        [FindsBy(How = How.Name, Using = "dob")]
-        private readonly IWebElement DOB;
-        [FindsBy(How = How.Name, Using = "addr")]
-        private readonly IWebElement Address;
-        [FindsBy(How = How.Name, Using = "city")]
-        private readonly IWebElement City;
-        [FindsBy(How = How.Name, Using = "state")]
-        private readonly IWebElement State;
-        [FindsBy(How = How.Name, Using = "pinno")]
-        private readonly IWebElement Pincode;
-        [FindsBy(How = How.Name, Using = "telephoneno")]
-        private readonly IWebElement MobileNumber;
-        [FindsBy(How = How.Name, Using = "emailid")]
-        private readonly IWebElement EmailId;
-        [FindsBy(How = How.Name, Using = "password")]
-        private readonly IWebElement Password;
-        [FindsBy(How = How.Name, Using = "sub")]
-        private readonly IWebElement SubmitBtn;
-        [FindsBy(How = How.Name, Using = "res")]
-        private readonly IWebElement ResetBtn;
+        private IWebElement SelectGender { get; set; }
+        [FindsBy(How = How.XPath, Using = "//input[@id='dob']")]
+        private IWebElement DOB { get; set; }
+        [FindsBy(How = How.XPath, Using = "//textarea[@name='addr']")]
+        private IWebElement Address { get; set; }
+        [FindsBy(How = How.XPath, Using = "//input[@name='city']")]
+        private IWebElement City { get; set; }
+        [FindsBy(How = How.XPath, Using = "//input[@name='state']")]
+        private IWebElement State { get; set; }
+        [FindsBy(How = How.XPath, Using = "//input[@name='pinno']")]
+        private IWebElement Pincode { get; set; }
+        [FindsBy(How = How.XPath, Using = "//input[@name='telephoneno']")]
+        private IWebElement MobileNumber { get; set; }
+        [FindsBy(How = How.XPath, Using = "//input[@name='emailid']")]
+        private IWebElement EmailId { get; set; }
+        [FindsBy(How = How.XPath, Using = "//input[@name='password']")]
+        private IWebElement Password { get; set; }
+        [FindsBy(How = How.XPath, Using = "//input[@name='sub']")]
+        private IWebElement SubmitBtn { get; set; }
+        [FindsBy(How = How.XPath, Using = "//input[@name='res']")]
+        private IWebElement ResetBtn { get; set; }
         [FindsBy(How = How.XPath, Using = "//table[@id='customer']/tbody/tr[1]/td")]
-        private readonly IWebElement RegisteredSuccessMessage;
+        private IWebElement RegisteredSuccessMessage { get; set; }
         [FindsBy(How = How.XPath, Using = "//table[@id='customer']/tbody/tr")]
-        private IList<IWebElement> RegisteredCustomerDetails;
+        private IList<IWebElement> RegisteredCustomerDetails { get; set; }
         [FindsBy(How = How.LinkText, Using = "New Customer")]
-        private IWebElement NewCustomerLink;
+        private IWebElement NewCustomerLink { get; set; }
         [FindsBy(How = How.LinkText, Using = "Home")]
-        private IWebElement HomeLink;
+        private IWebElement HomeLink { get; set; }
         [FindsBy(How = How.LinkText, Using = "Continue")]
-        private IWebElement ContinueLink;
+        private IWebElement ContinueLink { get; set; }
         [FindsBy(How = How.XPath, Using = "//tbody/tr[4]/td[2]")]
-        private IWebElement CustomerId;
+        private IWebElement CustomerId { get; set; }
 
 
         public AddNewCustomerPage()
@@ -75,15 +75,16 @@ namespace Bank_AutomationProject.Pages
         }
         public void EnterNewCustomerDetails()
         {
+            Random RndNum = new Random();
             CustomerName.SendKeys("test customer");
             SelectGender.Click();
             DOB.SendKeys("03/09/1991");
-            Address.SendKeys("64 Ranstone Gardens" + "\n" + "Scarborough" + "\n" + "Ontario, Canada");
+            Address.SendKeys("64 Ranstone Gardens");
             City.SendKeys("Toronto");
             State.SendKeys("Ontario");
             Pincode.SendKeys("123456");
             MobileNumber.SendKeys("6475261718");
-            EmailId.SendKeys("testcustomer@gmail.com");
+            EmailId.SendKeys("testcustomer"+ RndNum.Next()+"@gmail.com");
             Password.SendKeys("Abc123@");
         }
 

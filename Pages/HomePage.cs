@@ -11,9 +11,9 @@ namespace Bank_AutomationProject.Pages
     public class HomePage:BasePage
     {
         [FindsBy(How = How.XPath, Using = "//marquee[@behavior='alternate']")]
-        private readonly IWebElement GetTheWelcomeManagerPageText;
+        private IWebElement GetTheWelcomeManagerPageText { get; set; }
         [FindsBy(How = How.XPath, Using = "//tbody//tr//center//img[1]")]
-        private readonly IWebElement GetTheWelcomeManagerPageImg;
+        private IWebElement GetTheWelcomeManagerPageImg { get; set; }
 
         public HomePage()
         {
