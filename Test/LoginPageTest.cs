@@ -12,7 +12,7 @@ namespace Bank_AutomationProject.Test
     public class LoginPageTest : BasePage
     {
         LoginPage Lp;
-        HomePage Hp;
+        private HomePage Hp;
         [SetUp]
         public void Setup()
         {
@@ -24,7 +24,7 @@ namespace Bank_AutomationProject.Test
         public void LoginTest()
         {
             Hp = Lp.Login(config.GetUserId(),config.GetPassword());
-            Assert.AreEqual("Manger Id : "+ config.GetUserId(), Lp.GetTheLoginId());
+            Assert.AreEqual("Manger Id : "+config.GetUserId(), Lp.GetTheLoginId());
         }
         [TearDown]
         public void TearDown()
